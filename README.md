@@ -10,3 +10,8 @@ YouTube Basic React Version
 -Used lodash _.debounce to throttle search
 -Used Bootstrap v4 to style the application
 -Made 5 components total: SearchBar, VideoDetail, VideoList, VideoListItem, and App
+
+
+##Start Up App
+
+`npm start` - run the app from the root directory
