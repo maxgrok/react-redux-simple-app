@@ -1,10 +1,10 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
 import YTSearch from 'youtube-api-search';
 import VideoDetail from './components/VideoDetail';
-import _ from lodash;
 
 const API_KEY ="AIzaSyBd1LdIreiGycf4cOARvu-5Z86LOPGSwnI"
 
@@ -25,8 +25,10 @@ class App extends Component{
   }
 
   render(){
+    const videoSearch = _.debounce((term) => {this.videoSearch(term), 300}); //search term only triggers search every 300 miliseconds
+
     return (<div>
-    <SearchBar onSearchTermChange={term=>this.videoSearch(term)}/>
+    <SearchBar onSearchTermChange={videoSearch}/>
     <VideoList onVideoSelect={(selectedVideo)=>{this.setState({selectedVideo})}} videos={this.state.videos} />
     <VideoDetail video={this.state.selectedVideo} />
     </div>);
